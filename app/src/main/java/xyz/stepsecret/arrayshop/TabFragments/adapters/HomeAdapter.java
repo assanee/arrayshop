@@ -105,7 +105,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
                 .into(holder.img_person);
 
         holder.tv_services.setOnClickListener(new View.OnClickListener() {
-            
+
             @Override
             public void onClick(View v) {
 

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="app_name">Array Shop</string>
+
     <string name="action_settings">ตั้งค่า</string>
     <string name="Gender_choose">เพศ</string>
     <string-array name="gender">
@@ -35,7 +37,7 @@
     <string name="logout">ออกจากระบบ</string>
 
     <string name="current_queue">คิวปัจจุบัน</string>
-    <string name="waiting_queue">จำนวนคิวที่รอ</string>
+    <string name="waiting_queue">รออีก</string>
     <string name="time_wait">เวลาที่รอ (นาที)</string>
     <string name="_your">คิว</string>
     <string name="_queue">ของคุณ</string>
@@ -50,6 +52,8 @@
     <string name="map">แผนที่</string>
 
     <string name="areyousure">คุณแน่ใจไหม?</string>
+    <string name="services">รับบริการ</string>
+    <string name="cancelqueue">ยกเลิก</string>
     <string name="cancel">ยกเลิก</string>
     <string name="cancelled">ยกเลิกดำเนินการ</string>
     <string name="deleted">ดำเนินการสำเร็จ</string>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Array project 3</string>
+    <string name="app_name">Array Shop</string>
 
     <string name="action_settings">Settings</string>
     <string name="Gender_choose">Choose gender</string>
@@ -50,6 +50,8 @@
     <string name="map">Map</string>
 
     <string name="areyousure">Are you sure?</string>
+    <string name="services">On services</string>
+    <string name="cancelqueue">Cancel</string>
     <string name="cancel">No,cancel plx!</string>
     <string name="cancelled">Cancelled</string>
     <string name="deleted">Deleted</string>

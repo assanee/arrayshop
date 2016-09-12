@@ -50,6 +50,8 @@
     <string name="map">Map</string>
 
     <string name="areyousure">Are you sure?</string>
+    <string name="services">On services</string>
+    <string name="cancelqueue">Cancel</string>
     <string name="cancel">No,cancel plx!</string>
     <string name="cancelled">Cancelled</string>
     <string name="deleted">Deleted</string>

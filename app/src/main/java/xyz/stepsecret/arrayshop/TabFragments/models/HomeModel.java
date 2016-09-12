@@ -1,7 +1,7 @@
 package xyz.stepsecret.arrayshop.TabFragments.models;
 
 /**
- * Created by Lincoln on 15/01/16.
+ * Created by stepsecret on 15/01/16.
  */
 public class HomeModel {
     private String id_queue, name, date, number_book, queue , table;

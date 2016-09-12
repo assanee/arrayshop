@@ -3,6 +3,7 @@ package xyz.stepsecret.arrayshop.TabFragments;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -36,6 +37,7 @@ public class HomeFragment extends Fragment {
     private static HomeAdapter mAdapter;
     private static RestAdapter restAdapter;
     private static TinyDB Store_data;
+    private static SwipeRefreshLayout mSwipeRefreshLayout;
 
 
 
@@ -49,7 +51,7 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        View v = inflater.inflate(R.layout.home_content, container, false);
+        View v = inflater.inflate(R.layout.home_fragment, container, false);
 
         restAdapter = new RestAdapter.Builder()
                 .setEndpoint(ConfigData.API).build();
@@ -57,6 +59,8 @@ public class HomeFragment extends Fragment {
         Store_data = new TinyDB(getContext());
 
         recyclerView = (RecyclerView) v.findViewById(R.id.recycler_view);
+        mSwipeRefreshLayout = (SwipeRefreshLayout) v.findViewById(R.id.swipe_refresh);
+        mSwipeRefreshLayout.setColorSchemeResources(R.color.holo_red, R.color.holo_orange, R.color.holo_green);
 
         mAdapter = new HomeAdapter(getContext(),HomeList);
 
@@ -85,6 +89,14 @@ public class HomeFragment extends Fragment {
             }
         }));
 
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+
+                clearData();
+            }
+        });
+
 
         clearData();
 
@@ -97,11 +109,13 @@ public class HomeFragment extends Fragment {
         prepareMovieData();
     }
 
+    private static void onRefreshCompleted() {
+
+        mSwipeRefreshLayout.setRefreshing(false);
+    }
+
 
     private static void prepareMovieData() {
-
-
-        Log.e(" TAG ","success : start" );
 
         final QueueBranch_API queueBranch_api = restAdapter.create(QueueBranch_API.class);
 
@@ -127,6 +141,7 @@ public class HomeFragment extends Fragment {
                     }
 
                     mAdapter.notifyDataSetChanged();
+                    onRefreshCompleted();
 
                 }
                 else
