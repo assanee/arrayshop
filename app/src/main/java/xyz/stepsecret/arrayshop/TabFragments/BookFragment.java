@@ -30,6 +30,7 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 import xyz.stepsecret.arrayshop.API.ReserveBranch_API;
 import xyz.stepsecret.arrayshop.API.Table_API;
+import xyz.stepsecret.arrayshop.Alert.AlertShow;
 import xyz.stepsecret.arrayshop.Config.ConfigData;
 import xyz.stepsecret.arrayshop.Model.ReserveBranch_Model;
 import xyz.stepsecret.arrayshop.Model.Table_Model;
@@ -47,6 +48,8 @@ public class BookFragment extends Fragment {
 
     private  RestAdapter restAdapter;
     private  TinyDB Store_data;
+
+    private AlertShow alertShow = new AlertShow();
 
     private ImageView img_brand, img_right, img_left;
 
@@ -73,6 +76,12 @@ public class BookFragment extends Fragment {
         // Inflate the layout for this fragment
 
         View v = inflater.inflate(R.layout.activity_book, container, false);
+
+        number = 0;
+
+        Id_table = "";
+
+        type_table = "";
 
         restAdapter = new RestAdapter.Builder()
                 .setEndpoint(ConfigData.API).build();
@@ -184,10 +193,12 @@ public class BookFragment extends Fragment {
     public void clearData() {
         TableList.clear(); //clear list
         mAdapter.notifyDataSetChanged(); //let your adapter know about the changes and reload view.
-        prepareMovieData();
+        prepareData();
     }
 
-    private void prepareMovieData() {
+    private void prepareData() {
+
+
 
         final Table_API table_api = restAdapter.create(Table_API.class);
 
@@ -217,7 +228,7 @@ public class BookFragment extends Fragment {
                 else
                 {
                     //show_failure(result.getMessage());
-                    Log.e(" TAG ","error");
+                    Log.e(" prepareData ","error");
                 }
 
 
@@ -228,7 +239,7 @@ public class BookFragment extends Fragment {
             public void failure(RetrofitError error) {
 
                 //show_failure(error.getMessage());
-                Log.e(" TAG ","failure");
+                Log.e(" prepareData ","failure");
 
             }
         });
@@ -244,11 +255,15 @@ public class BookFragment extends Fragment {
     {
         if(number == 0)
         {
-            show_failure(" Number of Seat > 0");
+            //show_failure(" Number of Seat > 0");
+            alertShow.show_success(getContext()," Number of Seat > 0");
+
+
         }
         else if(type_table == null || type_table.isEmpty())
         {
-            show_failure(" Please select table");
+            //show_failure(" Please select table");
+            alertShow.show_success(getContext()," Please select table");
         }
         else
         {
@@ -286,12 +301,16 @@ public class BookFragment extends Fragment {
                                 if(!result.getError()) {
 
                                     sDialog.dismiss();
-                                    show_success(result.getQueue());
+
+                                   // show_success(result.getQueue());
+                                    alertShow.show_success(getContext(),result.getQueue());
 
                                 }
                                 else
                                 {
-                                    show_failure("Reserve failure");
+                                    //show_failure("Reserve failure");
+                                    alertShow.show_success(getContext(),"Reserve failure");
+
                                     Log.e(" TAG ","error");
                                 }
 
@@ -302,7 +321,8 @@ public class BookFragment extends Fragment {
                             @Override
                             public void failure(RetrofitError error) {
 
-                                show_failure(error.getMessage());
+                                //show_failure(error.getMessage());
+                                alertShow.show_success(getContext(),error.getMessage());
                                 Log.e(" TAG ","failure");
 
                             }
@@ -314,7 +334,7 @@ public class BookFragment extends Fragment {
                 .show();
     }
 
-
+/*
     public void show_success(String message)
     {
         new SweetAlertDialog(getContext(), SweetAlertDialog.SUCCESS_TYPE)
@@ -328,7 +348,7 @@ public class BookFragment extends Fragment {
                 .setTitleText(message)
                 .show();
     }
-
+*/
 
     public interface ClickListener {
         void onClick(View view, int position);

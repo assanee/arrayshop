@@ -112,8 +112,8 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
 
                 new SweetAlertDialog(mContext, SweetAlertDialog.WARNING_TYPE)
                         .setTitleText(mContext.getResources().getString(R.string.areyousure))
-                        .setCancelText(mContext.getResources().getString(R.string.cancel))
-                        .setConfirmText(mContext.getResources().getString(R.string.sure))
+                        .setCancelText(mContext.getResources().getString(R.string.no))
+                        .setConfirmText(mContext.getResources().getString(R.string.yes))
                         .showCancelButton(true)
                         .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
                             @Override

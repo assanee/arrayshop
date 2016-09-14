@@ -27,7 +27,6 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.MyViewHolder
         public TextView  tv_table, tv_wait_queue, tv_wait_time;
         public String id_table;
         public LinearLayout ln1;
-        public Boolean Check_table = true;
 
         public MyViewHolder(View view) {
             super(view);
@@ -41,13 +40,6 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.MyViewHolder
 
         }
     }
-    public void show_failure(String message)
-    {
-        new SweetAlertDialog(mContext, SweetAlertDialog.ERROR_TYPE)
-                .setTitleText(message)
-                .show();
-    }
-
 
     public TableAdapter(Context context, List<TableModel> tablelist) {
 
@@ -96,19 +88,7 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.MyViewHolder
                     ln_temp = holder.ln1;
                 }
 
-                /*if(BookFragment.Id_table.isEmpty())
-                {
-                    holder.ln1.setBackgroundResource(R.drawable.rounded_corner_red);
-                    BookFragment.Id_table = holder.id_table;
-                    BookFragment.type_table = holder.tv_table.getText().toString();
-                }
-                else if(holder.id_table.equals(BookFragment.Id_table))
-                {
-                    holder.ln1.setBackgroundResource(R.drawable.rounded_corner_no);
-                    BookFragment.Id_table = "";
-                    BookFragment.type_table = "";
-                }
-                */
+
 
             }
         });

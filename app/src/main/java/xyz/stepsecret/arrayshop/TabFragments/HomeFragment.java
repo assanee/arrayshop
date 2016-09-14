@@ -147,6 +147,7 @@ public class HomeFragment extends Fragment {
                 else
                 {
                     //show_failure(result.getMessage());
+                    onRefreshCompleted();
                     Log.e(" TAG ","error");
                 }
 
@@ -158,6 +159,7 @@ public class HomeFragment extends Fragment {
             public void failure(RetrofitError error) {
 
                 //show_failure(error.getMessage());
+                onRefreshCompleted();
                 Log.e(" TAG ","failure");
 
             }
